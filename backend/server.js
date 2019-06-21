@@ -36,6 +36,7 @@ app.use('/course', courseRoutes);
 app.use('/instructor',instructorRoutes);
 app.use('/student', studentRoutes);
 app.use('/instructor',instructorRoutes);
+app.use('/exam', examRoutes);
 
 
 //COURSE ROUTES
@@ -113,7 +114,7 @@ instructorRoutes.route('/add').post(function(req,res){
         service: 'gmail',
         auth: {
             user: 'naduniranasinghe@gmail.com',
-            pass: ''
+            pass: 'pasindu7135'
         }
     });
 
@@ -177,7 +178,7 @@ courseRoutes.route('/:id').delete(function (req, res) {
 
 //STUDENT ROUTES
 studentRoutes.route('/add').post(function(req,res){
-    let instructionIns = new instructor(req.body);
+    let instructionIns = new student(req.body);
     let mail = req.body.Email;
     let name = req.body.Name;
 
@@ -192,7 +193,7 @@ studentRoutes.route('/add').post(function(req,res){
         service: 'gmail',
         auth: {
             user: 'naduniranasinghe@gmail.com',
-            pass: ''
+            pass: 'pasindu7135'
         }
     });
 
@@ -222,5 +223,30 @@ studentRoutes.route('/').get(function (req, res) {
     });
 });
 
+//EXAM ROUTES
+examRoutes.route('/add').post(function (req, res) {
+
+
+
+    let examObj = new exam(req.body);
+
+    examObj.save()
+        .then(exam => {
+            res.status(200).json(exam);
+        })
+        .catch(err => {
+            res.status(400).send('adding new course failed');
+        });
+});
+
+examRoutes.route('/').get(function (req, res) {
+    exam.find(function (err, exam) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(exam);
+        }
+    });
+});
 
 
