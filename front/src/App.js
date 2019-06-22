@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 import logo from './logo.svg';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,6 +15,11 @@ import Instructor from './component/Instructor/instructor.main.component';
 import Student from './component/Student/student.main.component';
 import Exam from './component/ExamsAssignments/exam.main.component';
 import back from'../src/component/image1.jpg';
+
+//addded newly by pasan
+import CreateTodo from "./component/Courses/lecturercreate";
+import EditTodo from "./component/Courses/lectureredit";
+import ListTodo from "./component/Courses/lecturerlist";
 
 
 
@@ -55,6 +59,12 @@ function App() {
                             <li className="navbar-item">
                                 <Link to="/examMain" className="nav-link">Exam Details</Link>
                             </li>
+                            <li className="navbar-item">
+                                <Link to="/create" className="nav-link">Add Lecturers</Link>
+                            </li>
+                            <li className="navbar-item">
+                                <Link to="/lecturelist" className="nav-link">List Lecturers</Link>
+                            </li>
                         </ul>
                     </div>
 
@@ -66,6 +76,10 @@ function App() {
                 <Route path="/studentMain" component={Student}/>
                 <Route path="/examMain" component={Exam}/>
 
+                {/*pasan added new things*/}
+                <Route path="/edit/:id" component={EditTodo} />
+                <Route path="/create" component={CreateTodo} />
+                <Route path="/lecturelist" component={ListTodo} />
             </div>
 
             <StickyFooter

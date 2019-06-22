@@ -82,14 +82,14 @@ export default class UpdateCourse extends Component {
     render() {
         return (
             <div>
-                <div style={{marginLeft: '450px', marginTop: 10, width: 700, background: 'black', color: 'white'}}
+                <div style={{marginLeft: '450px', marginTop: 10, width: 700, background: 'white', color: 'white'}}
                      ref={(section) => {
                          this.appDiv = section;
                      }}>
-                    <h3 align="center"><u>Modify Course Details</u></h3>
+                    <h3 align="center" style={{color:'black'}}><u>Modify Course Details</u></h3>
                     <form onSubmit={this.onSubmit} className="form-horizontal">
                         <div className="form-group">
-                            <label>Name : </label>
+                            <label style={{color:'black'}}>Name : </label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -98,7 +98,7 @@ export default class UpdateCourse extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label>Code : </label>
+                            <label style={{color:'black'}}>Code : </label>
                             <input
                                 type="text"
                                 className="form-control"

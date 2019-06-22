@@ -12,6 +12,8 @@ export default class CourseAdd extends Component{
         this.state= {
             Name: '',
             Code: '',
+            nameError:"",
+            codeError:"",
         }
     };
 
@@ -26,27 +28,58 @@ export default class CourseAdd extends Component{
             Code:e.target.value
         });
     }
-    onSubmit(e){
-        e.preventDefault();
+    validate =() => {
+        let nameError ="";
+        let codeError = "";
 
-        const newCourse={
-            Name: this.state.Name,
-            Code: this.state.Code,
-        };
+        if(!this.state.Name){
 
-        axios.post('http://localhost:3001/course/add', newCourse)
-            .then(res => {
-                    console.log(res);
-                    alert(`Course Name: ${res.data.Name} ,: ID ${res.data._id}`);
-                }
-            );
-
-        this.state= {
-            Name: '',
-            Code: '',
+            nameError ="Name cannot be empty";
         }
+        if(!this.state.Code){
+
+            codeError ="Code cannot be empty"
+        }
+        if(nameError || codeError ){
+            this.setState({nameError,codeError});
+            return false;
+        }
+        return true;
+
     }
 
+    onSubmit(event){
+        event.preventDefault();
+        const isValid = this.validate();
+        if(isValid){
+            console.log(this.state);
+            const newCourse={
+                Name: this.state.Name,
+                Code: this.state.Code,
+                Lecturer : this.state.Lecturer
+            };
+
+            axios.post('http://localhost:3001/course/add', newCourse)
+                .then(res => {
+                        console.log(res);
+                        alert(`Course Name: ${res.data.Name} ,: ID ${res.data._id}`);
+                    }
+                );
+
+            this.state= {
+                Name: '',
+                Code: '',
+                Lecturer :'',
+                nameError:"",
+                codeError:"",
+
+            }
+        }
+        else{
+            console.log(this.state);
+        }
+
+    }
     componentDidMount() {
         document.title="Add Course | SLIIT";
     }
@@ -65,6 +98,9 @@ export default class CourseAdd extends Component{
                                 value={this.state.Name || ''}
                                 onChange={this.onChangeName}
                             />
+                            <div style={{fontSize:16,color:"red"}}>
+                                {this.state.nameError}
+                            </div>
                         </div>
                         <div className="form-group">
                             <label>Course Code : </label>
@@ -74,6 +110,9 @@ export default class CourseAdd extends Component{
                                 value={this.state.Code || ''}
                                 onChange={this.onChangeCode}
                             />
+                            <div style={{fontSize:16,color:"red"}}>
+                                {this.state.codeError}
+                            </div>
                         </div>
                         <div className="form-group" style={{marginLeft:'250px'}}>
                             <input type="submit" value="RegisterCourse" className="btn btn-primary" />

@@ -10,7 +10,14 @@ const CourseSchema = new Schema({
     Code : {
         type : String,
         require : true
-    }
+    },
+    //ADDDED NEW BY PASAN
+    lecturer: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'lecturer'
+        }
+    ]
 });
 
 module.exports = mongoose.model('course', CourseSchema);
