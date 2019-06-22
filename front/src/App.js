@@ -8,7 +8,7 @@ import './App.css';
 
 import {BrowserRouter, Link, Route} from "react-router-dom";
 import CourseMain from "./component/Courses/course.main.component";
-import AdminMain from './component/AdminPanel/admin.main';
+import AdminMain from './component/ContentPage/contentPage';
 import StickyFooter from 'react-sticky-footer';
 
 import Instructor from './component/Instructor/instructor.main.component';

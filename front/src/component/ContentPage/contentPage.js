@@ -5,7 +5,7 @@ import CourseMain from '../Courses/course.add.component';
 import Instructor from '../Instructor/instructor.add.component';
 import Student from '../Student/student.add.component';
 import Exam from '../ExamsAssignments/exam.add.component';
-import back from "./1.jpg";
+import back from "./wall.jpg";
 
 
 
@@ -17,7 +17,7 @@ const secionStyle = {
     backgroundSize: 'cover',
     backgroundRepeat: ' repeat'
 };
-export default class AdminMain extends Component {
+export default class ContentPage extends Component {
     render() {
         return (
 
@@ -34,18 +34,18 @@ export default class AdminMain extends Component {
                         </ul>
                     </nav>
 
-                    <div style={{width: '800px'}}>
-                        <h3 className='modal-header' style={{
-                            marginTop: '50px',
-                            marginLeft: '500px',
-                            color: 'black',
-                            fontFamily: 'Stencil',
-                            fontSize : '55px',
-                            background: 'Hue',
-                            width: '480px',
-                            borderRadius: 80
-                        }} align="center">Welcome Admin</h3>
-                    </div>
+                    {/*<div style={{width: '800px'}}>*/}
+                    {/*    <h3 className='modal-header' style={{*/}
+                    {/*        marginTop: '50px',*/}
+                    {/*        marginLeft: '500px',*/}
+                    {/*        color: 'black',*/}
+                    {/*        fontFamily: 'Stencil',*/}
+                    {/*        fontSize : '55px',*/}
+                    {/*        background: 'Hue',*/}
+                    {/*        width: '480px',*/}
+                    {/*        borderRadius: 80*/}
+                    {/*    }} align="center"></h3>*/}
+                    {/*</div>*/}
                     <div style={{
                         marginLeft: "60px",
                         marginTop: '50px',
@@ -61,11 +61,11 @@ export default class AdminMain extends Component {
                                   background: '',
                                   marginLeft: '60px',
                                   marginTop: '30px'
-                              }} to="/courseAdd"><h2 style={{marginTop: '85px'}}>ADD NEW COURSES</h2></Link>
+                              }} to="/courseAdd"><h2 style={{marginTop: '85px'}}>ADD COURSES</h2></Link>
 
                         <Link className="btn btn-outline-warning"
                               style={{width: '400px', height: '280px', color: '#8b572a', marginLeft: '60px'}}
-                              to="/instructorAdd"><h2 style={{marginTop: '85px'}}>ADD NEW INSTRUCTORS</h2></Link>
+                              to="/instructorAdd"><h2 style={{marginTop: '85px'}}>ADD INSTRUCTORS</h2></Link>
 
 
                         <Link className="btn btn-outline-info"
@@ -76,17 +76,17 @@ export default class AdminMain extends Component {
                               style={{width: '400px', height: '280px', background: '', marginLeft: '60px'}}
                               to="/studentAdd"><h2 style={{marginTop: '85px'}}>ADD STUDENTS</h2></Link>
                     </div>
-                    <div style={{
-                        marginLeft: "60px",
-                        marginTop: '10px',
-                        color: 'black',
-                        fontFamily: 'Stencil',
-                        width: '250px'
-                    }}>
-                        <Link className="btn btn-outline-light"
-                              style={{width: '700px', height: '80px', color: '#000000', marginLeft: '400px'}}
-                              to="/notifications"><h2 style={{}}>MAKE NOTIFICATIONS</h2></Link>
-                    </div>
+                    {/*<div style={{*/}
+                    {/*    marginLeft: "60px",*/}
+                    {/*    marginTop: '10px',*/}
+                    {/*    color: 'black',*/}
+                    {/*    fontFamily: 'Stencil',*/}
+                    {/*    width: '250px'*/}
+                    {/*}}>*/}
+                    {/*    <Link className="btn btn-outline-light"*/}
+                    {/*          style={{width: '700px', height: '80px', color: '#000000', marginLeft: '400px'}}*/}
+                    {/*          to="/notifications"><h2 style={{}}>MAKE NOTIFICATIONS</h2></Link>*/}
+                    {/*</div>*/}
 
                 </div>
 

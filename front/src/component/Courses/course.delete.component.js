@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default class CourseDelete extends Component{
     componentDidMount() {
-        document.title="Delete Course | SliiTit";
+        document.title="Delete Course | SLIIT";
     }
 
     static deleteTrainFromDB(id){

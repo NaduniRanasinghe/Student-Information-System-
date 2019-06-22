@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 import axios from "axios";
-import CourseAdd from "./course.add.component";
+// import CourseAdd from "./course.add.component";
 
 import CourseUpdate from './course.update.component';
 import CourseDelete from './course.delete.component';

@@ -11,6 +11,10 @@ const examSchema = new Schema({
         type: String,
         require: true
     },
+    email: {
+        type: String,
+        require: true
+    },
     course: [
         {
             type: Schema.Types.ObjectId,

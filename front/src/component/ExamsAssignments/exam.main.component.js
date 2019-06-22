@@ -2,18 +2,22 @@ import React,{Component} from 'react';
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 import axios from "axios";
 
+//import CourseUpdate from './course.update.component';
+import ExamDelete from './exam.delete.component';
+// import ExamUpdate from "./exam.update.component";
+
 const Instructor = props => (
     <tr>
         <td>
-            <Link className="btn btn-primary" to={"/instructorUpdate/"+props.instructor._id}>Modify</Link>
+            <Link className="btn btn-primary" to={"/ExamUpdate/"+props.exam._id}>Modify</Link>
         </td>
         <td>
-            <Link className="btn btn-danger" to={"/instructorDelete/"+props.instructor._id}>Delete</Link>
+            <Link className="btn btn-danger" to={"/ExamDelete/"+props.exam._id}>Delete</Link>
         </td>
     </tr>
 );
 
-export default class InstructorMain extends Component {
+export default class ExamMain extends Component {
 
     componentDidMount() {
         document.title = "Instructor(Admin) | SLIIT";
@@ -72,7 +76,9 @@ export default class InstructorMain extends Component {
                             <thead style={{fontFamily: 'Stencil',background:'#AEA1FF'}}>
                             <tr>
                                 <th>Name</th>
+                                <th>End Date</th>
                                 <th>Email</th>
+
                                 <th>Course</th>
                                 <th>Update</th>
                                 <th>Delete</th>
@@ -86,13 +92,14 @@ export default class InstructorMain extends Component {
                                         <tr key={cou._id}>
                                             <td>{cou.Name}</td>
                                             <td>{cou.endDate}</td>
+                                            <td>{cou.email}</td>
 
                                             <td><button className="btn-success" onClick = {this.course.bind(this,cou.course)}>Courses</button></td>
                                             <td>
-                                                <Link className="btn btn-primary" to={"/instructorUpdate/"+cou._id}>Modify</Link>
+                                                <Link className="btn btn-primary" to={"/ExamUpdate/"+cou._id}>Modify</Link>
                                             </td>
                                             <td>
-                                                <Link className="btn btn-danger" to={"/instructorDelete/"+cou._id}>Delete</Link>
+                                                <Link className="btn btn-danger" to={"/ExamDelete/"+cou._id}>Delete</Link>
                                             </td>
                                         </tr>
                                     )
@@ -103,7 +110,8 @@ export default class InstructorMain extends Component {
                         </table>
                     </div>
                 </div>
-
+                {/*<Route path="/ExamUpdate" component={ExamUpdate}/>*/}
+                <Route path="/ExamDelete" component={ExamDelete}/>
             </Router>
         )
     }

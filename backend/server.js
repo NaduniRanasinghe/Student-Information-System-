@@ -195,6 +195,7 @@ studentRoutes.route('/add').post(function(req,res){
             user: 'naduniranasinghe@gmail.com',
             pass: 'pasindu7135'
         }
+
     });
 
     const mailOptions = {
@@ -211,6 +212,8 @@ studentRoutes.route('/add').post(function(req,res){
             console.log('Email sent: ' + info.response);
         }
     });
+
+
 });
 
 studentRoutes.route('/').get(function (req, res) {
@@ -225,19 +228,39 @@ studentRoutes.route('/').get(function (req, res) {
 
 //EXAM ROUTES
 examRoutes.route('/add').post(function (req, res) {
-
-
-
-    let examObj = new exam(req.body);
-
-    examObj.save()
-        .then(exam => {
-            res.status(200).json(exam);
+    let courseIns = new exam(req.body);
+    let mail = req.body.email;
+    courseIns.save()
+        .then(course => {
+            res.status(200).json(course);
         })
         .catch(err => {
             res.status(400).send('adding new course failed');
         });
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'naduniranasinghe@gmail.com',
+            pass: 'pasindu7135'
+        }
+    });
+
+    const mailOptions = {
+        from: 'naduniranasinghe@gmail.com',
+        to: mail,
+        subject: 'SLIIT',
+        text: 'Dear  you have been added as an Instructor to the System. Thank you ! '
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
 });
+
 
 examRoutes.route('/').get(function (req, res) {
     exam.find(function (err, exam) {
@@ -245,6 +268,20 @@ examRoutes.route('/').get(function (req, res) {
             console.log(err);
         } else {
             res.json(exam);
+        }
+
+
+    });
+});
+
+examRoutes.route('/:id').delete(function (req, res) {
+    let id = req.params.id;
+    exam.findById(id, function (err, exams) {
+        if (err) {
+            console.log(err);
+        } else {
+            exams.remove();
+            res.json(exams);
         }
     });
 });
