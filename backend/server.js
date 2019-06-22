@@ -13,12 +13,15 @@ const courseRoutes = express.Router();
 const instructorRoutes = express.Router();
 const studentRoutes = express.Router();
 const examRoutes = express.Router();
+const participantRoutes = express.Router();
+const assignmentRoutes = express.Router();
 
 const student =  require('../backend/models/student');
 const exam = require ('../backend/models/exam');
 const course =  require('../backend/models/course');
 const instructor = require ('../backend/models/instructor');
-
+// const participant = require ('../backend/models/participants');
+const assignment = require ('../backend/models/assignment');
 
 app.listen(PORT, function () {
     console.log("Server is running on Port: " + PORT);
@@ -35,8 +38,9 @@ connection.once('open', function () {
 app.use('/course', courseRoutes);
 app.use('/instructor',instructorRoutes);
 app.use('/student', studentRoutes);
-app.use('/instructor',instructorRoutes);
 app.use('/exam', examRoutes);
+app.use('/participant', participantRoutes);
+app.use('/assignment', assignmentRoutes);
 
 
 //COURSE ROUTES
@@ -179,8 +183,10 @@ courseRoutes.route('/:id').delete(function (req, res) {
 //STUDENT ROUTES
 studentRoutes.route('/add').post(function(req,res){
     let instructionIns = new student(req.body);
+
     let mail = req.body.Email;
     let name = req.body.Name;
+
 
     instructionIns.save()
         .then(instructor => {
@@ -286,4 +292,62 @@ examRoutes.route('/:id').delete(function (req, res) {
     });
 });
 
+//EXAM ROUTES
+assignmentRoutes.route('/add').post(function (req, res) {
+    let assignment1 = new assignment(req.body);
 
+    assignment1.save()
+        .then(assignment => {
+            res.status(200).json(assignment);
+        })
+        .catch(err => {
+            res.status(400).send('adding new assignment failed');
+        });
+
+});
+
+
+assignmentRoutes.route('/').get(function (req, res) {
+    assignment.find(function (err, assignment) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(assignment);
+        }
+
+
+    });
+});
+
+assignmentRoutes.route('/:id').delete(function (req, res) {
+    let id = req.params.id;
+    assignment.findById(id, function (err, assignments) {
+        if (err) {
+            console.log(err);
+        } else {
+            assignments.remove();
+            res.json(assignments);
+        }
+    });
+});
+
+
+//participant
+// participantRoutes.route('/add').post(function (req, res) {
+//     let courseIns = new participant(req.body);
+//     console.log(courseIns);
+//     courseIns.save()
+//         .then(course => {
+//             res.status(200).json(course);
+//         })
+//         .catch(err => {
+//             res.status(400).send('adding new course failed');
+//         });
+// });
+//
+// participantRoutes.route('/:id').get(function (req, res) {
+//     let id = req.params.id;
+//     participant.findById(id, function (err, participants) {
+//         res.json(participants);
+//     });
+// });

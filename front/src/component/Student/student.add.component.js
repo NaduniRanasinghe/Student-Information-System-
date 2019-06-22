@@ -47,11 +47,21 @@ export default class InstructorAdd extends Component{
             Phone: this.state.Phone,
             course: this.state.course
         };
+        const participant={
+            Name: this.state.Name,
+            course: this.state.course
+        };
 
         axios.post('http://localhost:3001/student/add', newIns)
             .then(res => {
                     console.log(res);
                     alert(`An email has been sent to the Instructor`);
+                }
+            );
+        axios.post('http://localhost:3001/participant/add', participant)
+            .then(res => {
+                    console.log(res);
+                    // alert(`An email has been sent to the Instructor`);
                 }
             );
 

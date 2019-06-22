@@ -8,7 +8,8 @@ import './App.css';
 
 import {BrowserRouter, Link, Route} from "react-router-dom";
 import CourseMain from "./component/Courses/course.main.component";
-import AdminMain from './component/ContentPage/contentPage';
+import AdminMain from './component/ContentPage/contentPageAdmin';
+import InstructorMain from './component/ContentPage/contentPageInstructor';
 import StickyFooter from 'react-sticky-footer';
 
 import Instructor from './component/Instructor/instructor.main.component';
@@ -34,33 +35,37 @@ function App() {
 
             <div className={secionStyle}>
                 <nav className="navbar navbar-expand-md navbar-dark bg-primary">
-                    <a className="navbar-brand" href=" " target="_blank" rel="noopener noreferrer">
-                        <img src={logo} width="30" height="30" alt="Sri Lanka Railways"/>
-                    </a>
-                    <Link to="/courseMain" className="navbar-brand">Admin</Link>
+                    {/*<a className="navbar-brand" href=" " target="_blank" rel="noopener noreferrer">*/}
+                    {/*    <img src={logo} width="30" height="30" alt="Sri Lanka Railways"/>*/}
+                    {/*</a>*/}
+                    {/*<Link to="/courseMain" className="navbar-brand">Admin</Link>*/}
                     <div className="collpase navbar-collapse" style={{marginLeft: "780px"}}>
                         <ul className="navbar-nav mr-auto">
+                            {/*<li className="navbar-item" style={{paddingLeft: '100px '}}>*/}
+                            {/*    <Link to="/" className="nav-link">Admin</Link>*/}
+                            {/*</li>*/}
                             <li className="navbar-item" style={{paddingLeft: '100px '}}>
-                                <Link to="/" className="nav-link">Admin</Link>
+                                <Link to="/instructor" className="nav-link">Instructor</Link>
                             </li>
-                            <li className="navbar-item">
-                                <Link to="/courseMain" className="nav-link">Course Details</Link>
-                            </li>
-                            <li className="navbar-item">
-                                <Link to="/instructorMain" className="nav-link">Instructor Details</Link>
-                            </li>
-                            <li className="navbar-item">
-                                <Link to="/studentMain" className="nav-link">Student Details</Link>
-                            </li>
-                            <li className="navbar-item">
-                                <Link to="/examMain" className="nav-link">Exam Details</Link>
-                            </li>
+                            {/*<li className="navbar-item">*/}
+                            {/*    <Link to="/courseMain" className="nav-link">Course Details</Link>*/}
+                            {/*</li>*/}
+                            {/*<li className="navbar-item">*/}
+                            {/*    <Link to="/instructorMain" className="nav-link">Instructor Details</Link>*/}
+                            {/*</li>*/}
+                            {/*<li className="navbar-item">*/}
+                            {/*    <Link to="/studentMain" className="nav-link">Student Details</Link>*/}
+                            {/*</li>*/}
+                            {/*<li className="navbar-item">*/}
+                            {/*    <Link to="/examMain" className="nav-link">Exam Details</Link>*/}
+                            {/*</li>*/}
                         </ul>
                     </div>
 
                 </nav>
 
                 <Route path="/" exact component={AdminMain}/>
+                <Route path="/instructor" exact component={InstructorMain}/>
                 <Route path="/courseMain" component={CourseMain}/>
                 <Route path="/instructorMain" component={Instructor}/>
                 <Route path="/studentMain" component={Student}/>
@@ -68,21 +73,21 @@ function App() {
 
             </div>
 
-            <StickyFooter
-                bottomThreshold={20}
-                normalStyles={{
-                    backgroundColor: "#141616",
-                    padding: "2rem"
-                }}
-                stickyStyles={{
-                    backgroundColor: "r#141616",
-                    padding: "2rem"
-                }}
+            {/*<StickyFooter*/}
+            {/*    bottomThreshold={20}*/}
+            {/*    normalStyles={{*/}
+            {/*        backgroundColor: "#141616",*/}
+            {/*        padding: "2rem"*/}
+            {/*    }}*/}
+            {/*    stickyStyles={{*/}
+            {/*        backgroundColor: "r#141616",*/}
+            {/*        padding: "2rem"*/}
+            {/*    }}*/}
 
 
-            >
+            {/*>*/}
 
-            </StickyFooter>
+            {/*</StickyFooter>*/}
 
         </BrowserRouter>
     );

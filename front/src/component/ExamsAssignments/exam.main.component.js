@@ -20,7 +20,7 @@ const Instructor = props => (
 export default class ExamMain extends Component {
 
     componentDidMount() {
-        document.title = "Instructor(Admin) | SLIIT";
+        document.title = "Instructor | ";
         axios.get('http://localhost:3001/exam/')
             .then(response => {
                 this.setState({Instructor: response.data});
@@ -43,13 +43,14 @@ export default class ExamMain extends Component {
             }
         )
     }
-    instructorList() {
+    examList() {
         return this.state.Instructor.map(function(currentInstructor, i){
             return <Instructor instructor={currentInstructor} key={i} />;
         })
     }
 
     render(){
+
         return(
             <Router>
                 <div style={{width: '800px'}}>
